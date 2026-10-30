@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
 
@@ -15,13 +14,19 @@ pipeline {
 
         stage('Check Python') {
             steps {
-                bat 'py --version'
+                bat '"C:/Users/sksab/AppData/Local/Programs/Python/Python311/python.exe" --version'
+            }
+        }
+
+        stage('Create Virtual Environment') {
+            steps {
+                bat 'if not exist .venv-ci "C:/Users/sksab/AppData/Local/Programs/Python/Python311/python.exe" -m venv .venv-ci'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                bat 'if not exist .venv-ci py -m venv .venv-ci'
+                bat '.venv-ci\\Scripts\\python.exe -m pip install --upgrade pip'
                 bat '.venv-ci\\Scripts\\python.exe -m pip install -r requirements.txt'
             }
         }
