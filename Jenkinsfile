@@ -41,6 +41,11 @@ pipeline {
                 bat '"C:\\Users\\sksab\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" version'
             }
         }
+         stage('Build Docker Image') {
+            steps {
+                bat '"C:\\Users\\sksab\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" build -t flask-student-management:v1.%BUILD_NUMBER% .'
+            }
+        }
     }
 
     post {
