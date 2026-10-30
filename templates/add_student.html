@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add Student</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="container narrow">
+        <a class="back-link" href="{{ url_for('home') }}">← Back to students</a>
+        <section class="panel form-panel">
+            <p class="eyebrow">NEW RECORD</p>
+            <h1>Add a student</h1>
+            <p class="subtitle">Enter the student's details below.</p>
+
+            {% if error %}<div class="error">{{ error }}</div>{% endif %}
+
+            <form method="post" class="student-form">
+                <label for="name">Full name</label>
+                <input id="name" name="name" type="text" placeholder="e.g. Asha Kumar"
+                       value="{{ name|default('') }}" required>
+
+                <label for="email">Email address</label>
+                <input id="email" name="email" type="email" placeholder="e.g. asha@example.com"
+                       value="{{ email|default('') }}" required>
+
+                <label for="course">Course</label>
+                <input id="course" name="course" type="text" placeholder="e.g. Python"
+                       value="{{ course|default('') }}" required>
+
+                <button class="button full-width" type="submit">Save student</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
