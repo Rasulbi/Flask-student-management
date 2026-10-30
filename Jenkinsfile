@@ -36,6 +36,11 @@ pipeline {
                 bat '.venv-ci\\Scripts\\python.exe -m pytest -v'
             }
         }
+        stage('Check Docker') {
+            steps {
+                bat '"C:\\Users\\sksab\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" version'
+            }
+        }
     }
 
     post {
