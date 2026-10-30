@@ -1,4 +1,4 @@
-@'
+
 pipeline {
     agent any
 
@@ -42,4 +42,3 @@ pipeline {
         }
     }
 }
-'@ | Set-Content -Encoding UTF8 Jenkinsfile
